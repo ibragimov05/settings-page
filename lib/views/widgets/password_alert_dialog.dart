@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:settings_page/utils/app_constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class PasswordAlertDialog extends StatefulWidget {
   const PasswordAlertDialog({super.key});
@@ -64,12 +65,14 @@ class _PasswordAlertDialogState extends State<PasswordAlertDialog> {
             ),
           ),
           TextButton(
-            onPressed: () {
+            onPressed: () async {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
                 if (newPassword != previousPassword) {
                   if (previousPassword == AppConstants.password) {
                     AppConstants.password = newPassword;
+                    SharedPreferences preference = await SharedPreferences.getInstance();
+                    preference.setString('password', newPassword);
                     Navigator.of(context).pop();
                   } else {
                     print('Invalid previous password');

@@ -107,7 +107,7 @@ class _OnboardingState extends State<Onboarding> {
                   for (int i = 0; i < _textEditingControllersList.length; i++)
                     Expanded(
                       child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: TextField(
                           keyboardType: TextInputType.phone,
                           inputFormatters: [
@@ -118,7 +118,7 @@ class _OnboardingState extends State<Onboarding> {
                           onChanged: (value) {
                             FocusScope.of(context).nextFocus();
                           },
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             counterText: '',
                           ),
                         ),
@@ -127,7 +127,7 @@ class _OnboardingState extends State<Onboarding> {
                 ],
               ),
               Text(errorMessage),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               TextButton(
                 onPressed: () {
                   errorMessage = '';
@@ -157,7 +157,7 @@ class _OnboardingState extends State<Onboarding> {
                   }
                   setState(() {});
                 },
-                child: Text('Go to next page'),
+                child: const Text('Go to next page'),
               ),
             ],
           ),

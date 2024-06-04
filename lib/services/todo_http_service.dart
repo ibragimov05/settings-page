@@ -84,6 +84,4 @@ class TodoHttpService {
       body: jsonEncode(todoData),
     );
   }
-
-
 }

@@ -29,14 +29,36 @@ class _ProfileScreenState extends State<ProfileScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            height: 200,
-            width: 200,
-            clipBehavior: Clip.hardEdge,
-            decoration: BoxDecoration(shape: BoxShape.circle),
-            child: Image.network(
-              _userInfoViewModel.userInfo.profilePictureUrl,
-              fit: BoxFit.cover,
-            ),
+              height: 200,
+              width: 200,
+              clipBehavior: Clip.hardEdge,
+              decoration: BoxDecoration(shape: BoxShape.circle),
+              child: Image.network(
+                _userInfoViewModel.userInfo.profilePictureUrl,
+                loadingBuilder: (BuildContext context, Widget child,
+                    ImageChunkEvent? loadingProgress) {
+                  if (loadingProgress == null) {
+                    return child;
+                  } else {
+                    print('Loading progress: ${loadingProgress
+                        .cumulativeBytesLoaded} / ${loadingProgress
+                        .expectedTotalBytes}');
+                    return Center(
+                      child: CircularProgressIndicator(
+                        value: loadingProgress.expectedTotalBytes != null
+                            ? loadingProgress.cumulativeBytesLoaded /
+                            (loadingProgress.expectedTotalBytes ?? 1)
+                            : null,
+                      ),
+                    );
+                  }
+                },
+                errorBuilder: (BuildContext context, Object error,
+                    StackTrace? stackTrace) {
+                  print('Error loading image: $error');
+                  return Icon(Icons.error);
+                },
+              ),
           ),
           Text("Your name: ${_userInfoViewModel.userInfo.userName}"),
           Text('Your surname: ${_userInfoViewModel.userInfo.userSurname}'),
@@ -56,7 +78,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           TextFormField(
                             initialValue: _userInfoViewModel.userInfo.userName,
                             validator: (value) {
-                              if (value == null || value.trim().isEmpty) {
+                              if (value == null || value
+                                  .trim()
+                                  .isEmpty) {
                                 return 'Enter something';
                               }
                               return null;
@@ -69,9 +93,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                           TextFormField(
                             initialValue:
-                                _userInfoViewModel.userInfo.userSurname,
+                            _userInfoViewModel.userInfo.userSurname,
                             validator: (value) {
-                              if (value == null || value.trim().isEmpty) {
+                              if (value == null || value
+                                  .trim()
+                                  .isEmpty) {
                                 return 'Enter something';
                               }
                               return null;
@@ -84,9 +110,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                           TextFormField(
                             initialValue:
-                                _userInfoViewModel.userInfo.phoneNumber,
+                            _userInfoViewModel.userInfo.phoneNumber,
                             validator: (value) {
-                              if (value == null || value.trim().isEmpty) {
+                              if (value == null || value
+                                  .trim()
+                                  .isEmpty) {
                                 return 'Enter something';
                               }
                               return null;
@@ -99,9 +127,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                           TextFormField(
                             initialValue:
-                                _userInfoViewModel.userInfo.profilePictureUrl,
+                            _userInfoViewModel.userInfo.profilePictureUrl,
                             validator: (value) {
-                              if (value == null || value.trim().isEmpty) {
+                              if (value == null || value
+                                  .trim()
+                                  .isEmpty) {
                                 return 'Enter something';
                               }
                               return null;

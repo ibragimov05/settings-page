@@ -5,7 +5,7 @@ class UserInfoViewModel {
     userName: 'userName',
     userSurname: 'userSurname',
     phoneNumber: 'phoneNumber',
-    profilePictureUrl: 'https://belon.club/uploads/posts/2023-04/1681531491_belon-club-p-obichnii-muzhchina-pinterest-1.jpg',
+    profilePictureUrl: 'https://cdn.hackaday.io/images/3553251501638077867.png',
   );
 
   UserInfo get userInfo {

@@ -82,7 +82,7 @@ class _MyAppState extends State<MyApp> {
       ),
       darkTheme: ThemeData.dark(),
       themeMode: AppConstants.themeMode,
-      home: HomeScreen(
+      home: Onboarding(
         onThemeChanged: toggleThemeMode,
         onBackgroundChanged: onBackgroundChanged,
         onLanguageChanged: onLanguageChanged,
@@ -92,3 +92,5 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
+

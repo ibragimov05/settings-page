@@ -159,6 +159,16 @@ class _MyAppState extends State<MyApp> {
             index: data['index'] as int,
           ),
         );
+      case RouteNames.homeScreen:
+        return CupertinoPageRoute(
+          builder: (BuildContext context) => HomeScreen(
+            onThemeChanged: toggleThemeMode,
+            onBackgroundChanged: onBackgroundChanged,
+            onLanguageChanged: onLanguageChanged,
+            onColorChanged: onColorChanged,
+            onTextChanged: onTextChanged,
+          ),
+        );
 
       default:
         return CupertinoPageRoute(

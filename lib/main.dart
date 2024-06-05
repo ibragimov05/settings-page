@@ -74,13 +74,13 @@ class _MyAppState extends State<MyApp> {
     setState(() {});
   }
 
-  @override
-  void initState() {
-    super.initState();
-    AppConstants().setConstants().then((_) {
-      setState(() {});
-    });
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   AppConstants().setConstants().then((_) {
+  //     setState(() {});
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {

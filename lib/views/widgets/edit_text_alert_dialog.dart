@@ -7,7 +7,7 @@ class EditTextAlertDialog extends StatelessWidget {
 
   EditTextAlertDialog({super.key, required this.onTextChanged});
 
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   Color _currentColor = AppConstants.textColor;
   double fontSize = AppConstants.textSize;
 
@@ -64,7 +64,7 @@ class EditTextAlertDialog extends StatelessWidget {
               Navigator.of(context).pop();
             }
           },
-          child: Text('Save'),
+          child: const Text('Save'),
         ),
       ],
     );

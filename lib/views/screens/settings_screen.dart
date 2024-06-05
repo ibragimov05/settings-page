@@ -149,11 +149,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 onPressed: () {
                   _openColorPicker();
                 },
-                child: Text('Change color',
+                child: Text(
+                  'Change color',
                   style: TextStyle(
                     color: AppConstants.textColor,
                     fontSize: AppConstants.textSize,
-                  ),),
+                  ),
+                ),
               ),
               TextButton(
                 onPressed: () {
@@ -181,11 +183,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                   );
                 },
-                child: Text('Change text style',
+                child: Text(
+                  'Change text style',
                   style: TextStyle(
                     color: AppConstants.textColor,
                     fontSize: AppConstants.textSize,
-                  ),),
+                  ),
+                ),
               ),
             ],
           ),

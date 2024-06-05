@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_page/models/course_model.dart';
-import 'package:settings_page/viewmodels/course_view_model.dart';
 import 'package:settings_page/views/screens/course_info_screen/course_info_screen.dart';
 
 class CustomListViewBuilderContainer extends StatelessWidget {
@@ -59,7 +58,7 @@ class CustomListViewBuilderContainer extends StatelessWidget {
                     ],
                   ),
                   if (isDelete)
-                    TextButton(onPressed: onDeletePressed, child: Text('Delete course')),
+                    TextButton(onPressed: onDeletePressed, child: const Text('Delete course')),
                 ],
               ),
       ),

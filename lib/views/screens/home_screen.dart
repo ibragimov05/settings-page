@@ -4,9 +4,7 @@ import 'package:settings_page/utils/app_constants.dart';
 import 'package:settings_page/views/screens/main_screen/main_screen.dart';
 import 'package:settings_page/views/screens/profile_screen.dart';
 import 'package:settings_page/views/screens/results_screen.dart';
-import 'package:settings_page/views/screens/todo_screen/todo_screen.dart';
 import 'package:settings_page/views/widgets/custom_drawer.dart';
-import 'package:settings_page/views/widgets/custom_inkwell_button.dart';
 
 class HomeScreen extends StatefulWidget {
   final ValueChanged<bool> onThemeChanged;
@@ -30,10 +28,10 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
-  final List<Widget> _pages = <Widget>[
+  final List<Widget> _pages = const <Widget>[
     MainScreen(),
-    const ResultsScreen(),
-    const ProfileScreen(),
+    ResultsScreen(),
+    ProfileScreen(),
   ];
 
   @override

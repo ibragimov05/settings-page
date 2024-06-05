@@ -37,13 +37,13 @@ class _QuizScreenState extends State<QuizScreen> {
     showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
-        title: Text('Result'),
+        title: const Text('Result'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Text('You got $correctAnswers out of ${widget.quiz.length}'),
             if (correctAnswers == widget.quiz.length)
-              Text('Congratulations, you are genius'),
+              const Text('Congratulations, you are genius'),
           ],
         ),
         actions: [
@@ -51,7 +51,7 @@ class _QuizScreenState extends State<QuizScreen> {
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Text('Ok'),
+            child: const Text('Ok'),
           ),
         ],
       ),
@@ -92,7 +92,7 @@ class _QuizScreenState extends State<QuizScreen> {
           ),
           TextButton(
             onPressed: checkAnswers,
-            child: Text('Check answer'),
+            child: const Text('Check answer'),
           ),
         ],
       ),

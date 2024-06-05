@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:settings_page/utils/app_constants.dart';
-import 'package:settings_page/views/screens/home_screen.dart';
 import 'package:settings_page/views/screens/onboarding.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

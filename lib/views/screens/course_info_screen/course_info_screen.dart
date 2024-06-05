@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_page/models/course_model.dart';
-
 import 'dart:async';
-import 'package:flutter/material.dart';
 import 'package:settings_page/views/screens/quiz_screen/quiz_screen.dart';
 import 'package:url_launcher_platform_interface/url_launcher_platform_interface.dart';
 
@@ -53,7 +51,7 @@ class _CourseInfoScreenState extends State<CourseInfoScreen> {
               children: [
                 Text('Course description: ${widget.course.courseDescription}'),
                 Text('Course price: \$${widget.course.coursePrice}'),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
@@ -94,7 +92,7 @@ class _CourseInfoScreenState extends State<CourseInfoScreen> {
                       ],
                     ),
                     TextButton(
-                      style: ButtonStyle(
+                      style: const ButtonStyle(
                         overlayColor: WidgetStatePropertyAll(Colors.white),
                       ),
                       onPressed: () {
@@ -109,7 +107,7 @@ class _CourseInfoScreenState extends State<CourseInfoScreen> {
                           ),
                         );
                       },
-                      child: Text('Go to Quiz page'),
+                      child: const Text('Go to Quiz page'),
                     ),
                   ],
                 ),
@@ -121,10 +119,3 @@ class _CourseInfoScreenState extends State<CourseInfoScreen> {
     );
   }
 }
-
-//
-
-//ElevatedButton(
-//
-//                 child: const Text('Launch in Android Custom Tab'),
-//               ),

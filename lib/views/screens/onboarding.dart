@@ -1,62 +1,3 @@
-// import 'package:flutter/cupertino.dart';
-// import 'package:flutter/material.dart';
-//
-// class Onboarding extends StatelessWidget {
-//   Onboarding({super.key});
-//
-//   List<TextEditingController> _textEditingControllersList = [
-//     TextEditingController(),
-//     TextEditingController(),
-//     TextEditingController(),
-//     TextEditingController(),
-//   ];
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Center(
-//         child: Padding(
-//           padding: const EdgeInsets.symmetric(horizontal: 20.0),
-//           child: Column(
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             children: [
-//               Row(
-//                 children: [
-//                   for (int i = 0; i < _textEditingControllersList.length; i++)
-//                     Expanded(
-//                       child: Padding(
-//                         padding: EdgeInsets.symmetric(horizontal: 10),
-//                         child: textFieldMaker(
-//                             textController: _textEditingControllersList[i]),
-//                       ),
-//                     ),
-//                 ],
-//               ),
-//               TextButton(
-//                 onPressed: () {},
-//                 child: Text('Go to next page'),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-//
-//   Widget textFieldMaker({required TextEditingController textController}) {
-//     return TextField(
-//       controller: textController,
-//       maxLength: 1,
-//   onChanged: (value) {
-//     FocusScope.of(context).nextFocus()
-//   },
-//       decoration: InputDecoration(
-//         counterText: '',
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -84,7 +25,7 @@ class Onboarding extends StatefulWidget {
 }
 
 class _OnboardingState extends State<Onboarding> {
-  List<TextEditingController> _textEditingControllersList = [
+  final List<TextEditingController> _textEditingControllersList = [
     TextEditingController(),
     TextEditingController(),
     TextEditingController(),

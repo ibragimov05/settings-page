@@ -32,7 +32,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               height: 200,
               width: 200,
               clipBehavior: Clip.hardEdge,
-              decoration: BoxDecoration(shape: BoxShape.circle),
+              decoration: const BoxDecoration(shape: BoxShape.circle),
               child: Image.network(
                 _userInfoViewModel.userInfo.profilePictureUrl,
                 loadingBuilder: (BuildContext context, Widget child,
@@ -55,8 +55,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 },
                 errorBuilder: (BuildContext context, Object error,
                     StackTrace? stackTrace) {
-                  print('Error loading image: $error');
-                  return Icon(Icons.error);
+                  return const Icon(Icons.error);
                 },
               ),
           ),
@@ -156,7 +155,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 Navigator.of(context).pop();
                               }
                             },
-                            child: Text('Save'),
+                            child: const Text('Save'),
                           ),
                         ],
                       ),

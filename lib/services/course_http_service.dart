@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:settings_page/models/course_model.dart';
 import 'package:settings_page/models/lesson_model.dart';
-import 'package:settings_page/models/quiz_model.dart';
 
 class CourseHttpService {
   Future<List<Course>> getData() async {
@@ -60,33 +59,3 @@ class CourseHttpService {
     await http.delete(url);
   }
 }
-
-// void main() async {
-//   var s = CourseHttpService();
-//   // await s.getData();
-//   s.addCourse(
-//     courseTitle: 'Flutter',
-//     courseDescription:
-//         'Flutter courses can teach you how to build mobile applications for both Android and iOS devices using the Flutter framework. They typically cover the Dart programming language, which is what Flutter uses, as well as the widget-based UI structure that Flutter is known for.',
-//     courseImageUrl:
-//         'https://www.classcentral.com/report/wp-content/uploads/2022/09/BCG-Flutter-Featured-Banner.png',
-//     courseLessons: [
-//       Lesson(
-//         lessonId: 1,
-//         courseId: 1,
-//         lessonTitle: 'Flutter lesson 1',
-//         lessonDescription: 'Entering',
-//         videoUrl: 'videoUrl',
-//         lessonQuiz: [
-//           Quiz(
-//             qCorrectAnswer: 1,
-//             qId: 1,
-//             qOptions: ['yes', 'no'],
-//             qQuestion: 'Is apple sweet?',
-//           ),
-//         ],
-//       ),
-//     ],
-//     coursePrice: 780,
-//   );
-// }

@@ -64,10 +64,11 @@ class _MainScreenState extends State<MainScreen> {
                           itemCount: courseList.length,
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  crossAxisSpacing: 10,
-                                  mainAxisSpacing: 10,
-                                  childAspectRatio: 1.3),
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 10,
+                            mainAxisSpacing: 10,
+                            childAspectRatio: 1.3,
+                          ),
                           itemBuilder: (context, index) =>
                               CustomListViewBuilderContainer(
                             isViewStylePressed: _isViewStylePressed,

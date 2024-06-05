@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:settings_page/utils/app_constants.dart';
+import 'package:settings_page/utils/routes.dart';
 import 'package:settings_page/views/screens/home_screen.dart';
 
 class Onboarding extends StatefulWidget {
@@ -81,20 +82,21 @@ class _OnboardingState extends State<Onboarding> {
                     }
                   }
                   if (errorMessage.isEmpty) {
-                    Navigator.pushReplacement(
-                      context,
-                      CupertinoPageRoute(
-                        builder: (context) {
-                          return HomeScreen(
-                            onThemeChanged: widget.onThemeChanged,
-                            onBackgroundChanged: widget.onBackgroundChanged,
-                            onLanguageChanged: widget.onLanguageChanged,
-                            onColorChanged: widget.onColorChanged,
-                            onTextChanged: widget.onTextChanged,
-                          );
-                        },
-                      ),
-                    );
+                    Navigator.pushReplacementNamed(context, RouteNames.homeScreen);
+                    // Navigator.pushReplacement(
+                    //   context,
+                    //   CupertinoPageRoute(
+                    //     builder: (context) {
+                    //       return HomeScreen(
+                    //         onThemeChanged: widget.onThemeChanged,
+                    //         onBackgroundChanged: widget.onBackgroundChanged,
+                    //         onLanguageChanged: widget.onLanguageChanged,
+                    //         onColorChanged: widget.onColorChanged,
+                    //         onTextChanged: widget.onTextChanged,
+                    //       );
+                    //     },
+                    //   ),
+                    // );
                   }
                   setState(() {});
                 },

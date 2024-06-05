@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_page/models/course_model.dart';
-import 'dart:async';
-import 'package:settings_page/views/screens/quiz_screen/quiz_screen.dart';
-import 'package:url_launcher_platform_interface/url_launcher_platform_interface.dart';
+import 'package:settings_page/utils/routes.dart';
+import 'package:settings_page/views/screens/you_tube_video/you_tube_video_screen.dart';
 
 class CourseInfoScreen extends StatefulWidget {
   final Course course;
@@ -15,19 +14,6 @@ class CourseInfoScreen extends StatefulWidget {
 }
 
 class _CourseInfoScreenState extends State<CourseInfoScreen> {
-  String toLaunch = 'https://youtu.be/cvh0nX08nRw?si=OGggf9tYYrGuBb5v';
-  Future<void>? _launched;
-  final UrlLauncherPlatform launcher = UrlLauncherPlatform.instance;
-
-  Future<void> _launchInCustomTab(String url) async {
-    if (!await launcher.launchUrl(
-      url,
-      const LaunchOptions(mode: PreferredLaunchMode.inAppBrowserView),
-    )) {
-      throw Exception('Could not launch $url');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +41,7 @@ class _CourseInfoScreenState extends State<CourseInfoScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Courses',
+                      'Lessons',
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
                       textAlign: TextAlign.start,
@@ -71,7 +57,20 @@ class _CourseInfoScreenState extends State<CourseInfoScreen> {
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (BuildContext context, int index) => GestureDetector(
               onTap: () => setState(() {
-                _launched = _launchInCustomTab(toLaunch);
+                ///////////////////////////////
+                Navigator.pushNamed(context, RouteNames.youTubeVideo, arguments: {
+                  'course': widget.course,
+                  'index': index,
+                });
+                // Navigator.push(
+                //   context,
+                //   CupertinoPageRoute(
+                //     builder: (BuildContext context) => YouTubeVideoScreen(
+                //       course: widget.course,
+                //       index: index,
+                //     ),
+                //   ),
+                // );
               }),
               child: Container(
                 padding: const EdgeInsets.all(20),
@@ -90,24 +89,6 @@ class _CourseInfoScreenState extends State<CourseInfoScreen> {
                         Text(widget
                             .course.courseLessons[index].lessonDescription),
                       ],
-                    ),
-                    TextButton(
-                      style: const ButtonStyle(
-                        overlayColor: WidgetStatePropertyAll(Colors.white),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                            builder: (BuildContext context) => QuizScreen(
-                              lessonTitle: widget.course.courseLessons[index].lessonTitle,
-                              quiz:
-                                  widget.course.courseLessons[index].lessonQuiz,
-                            ),
-                          ),
-                        );
-                      },
-                      child: const Text('Go to Quiz page'),
                     ),
                   ],
                 ),

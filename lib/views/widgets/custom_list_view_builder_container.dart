@@ -38,7 +38,7 @@ class CustomListViewBuilderContainer extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('Course name: ${course.courseTitle}'),
-                  Text('Description:  ${course.courseDescription}'),
+                  Text('Description:  ${course.courseDescription.split(' ')[0]}'),
                   Text('Price: ${course.coursePrice}'),
                 ],
               )

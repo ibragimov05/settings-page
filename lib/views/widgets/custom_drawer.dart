@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:settings_page/utils/app_constants.dart';
+import 'package:settings_page/utils/routes.dart';
 import 'package:settings_page/views/screens/admin_page/admin_page.dart';
-import 'package:settings_page/views/screens/home_screen.dart';
 import 'package:settings_page/views/screens/onboarding.dart';
-import 'package:settings_page/views/screens/settings_screen.dart';
 
 class CustomDrawer extends StatelessWidget {
   final ValueChanged<bool> onThemeChanged;
@@ -53,20 +52,7 @@ class CustomDrawer extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (ctx) {
-                    return HomeScreen(
-                      onThemeChanged: onThemeChanged,
-                      onBackgroundChanged: onBackgroundChanged,
-                      onLanguageChanged: onLanguageChanged,
-                      onColorChanged: onColorChanged,
-                      onTextChanged: onTextChanged,
-                    );
-                  },
-                ),
-              );
+              Navigator.pushReplacementNamed(context, RouteNames.homeScreen);
             },
             title: Text(
               "Main page",
@@ -81,20 +67,8 @@ class CustomDrawer extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (ctx) {
-                    return SettingsScreen(
-                      onThemeChanged: onThemeChanged,
-                      onBackgroundChanged: onBackgroundChanged,
-                      onLanguageChanged: onLanguageChanged,
-                      onColorChanged: onColorChanged,
-                      onTextChanged: onTextChanged,
-                    );
-                  },
-                ),
-              );
+              Navigator.pushReplacementNamed(
+                  context, RouteNames.settingsScreen);
             },
             title: Text(
               "Settings",
@@ -109,20 +83,7 @@ class CustomDrawer extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (ctx) {
-                    return AdminPage(
-                      onThemeChanged: onThemeChanged,
-                      onBackgroundChanged: onBackgroundChanged,
-                      onLanguageChanged: onLanguageChanged,
-                      onColorChanged: onColorChanged,
-                      onTextChanged: onTextChanged,
-                    );
-                  },
-                ),
-              );
+              Navigator.pushReplacementNamed(context, RouteNames.admin);
             },
             title: Text(
               "Admin page",
@@ -137,20 +98,7 @@ class CustomDrawer extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return Onboarding(
-                      onThemeChanged: onThemeChanged,
-                      onBackgroundChanged: onBackgroundChanged,
-                      onLanguageChanged: onLanguageChanged,
-                      onColorChanged: onColorChanged,
-                      onTextChanged: onTextChanged,
-                    );
-                  },
-                ),
-              );
+              Navigator.pushReplacementNamed(context, RouteNames.onboarding);
             },
             child: Text(
               'Log out',

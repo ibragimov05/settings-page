@@ -74,13 +74,13 @@ class _MyAppState extends State<MyApp> {
     setState(() {});
   }
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   AppConstants().setConstants().then((_) {
-  //     setState(() {});
-  //   });
-  // }
+  @override
+  void initState() {
+    super.initState();
+    AppConstants().setConstants().then((_) {
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -162,7 +162,7 @@ class _MyAppState extends State<MyApp> {
 
       default:
         return CupertinoPageRoute(
-          builder: (BuildContext context) => HomeScreen(
+          builder: (BuildContext context) => Onboarding(
             onThemeChanged: toggleThemeMode,
             onBackgroundChanged: onBackgroundChanged,
             onLanguageChanged: onLanguageChanged,

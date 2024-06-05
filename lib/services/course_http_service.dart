@@ -26,7 +26,7 @@ class CourseHttpService {
     throw Exception('Error: CourseHttpService().getData()');
   }
 
-  Future<Course> addCourse({
+    Future<Course> addCourse({
     required String courseTitle,
     required String courseDescription,
     required String courseImageUrl,

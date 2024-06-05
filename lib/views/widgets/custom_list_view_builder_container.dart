@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_page/models/course_model.dart';
+import 'package:settings_page/utils/routes.dart';
 import 'package:settings_page/views/screens/course_info_screen/course_info_screen.dart';
 
 class CustomListViewBuilderContainer extends StatelessWidget {
@@ -21,12 +22,7 @@ class CustomListViewBuilderContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          CupertinoPageRoute(
-            builder: (BuildContext context) => CourseInfoScreen(course: course),
-          ),
-        );
+        Navigator.pushNamed(context, RouteNames.courseInfo, arguments: course);
       },
       child: Container(
         margin: isViewStylePressed ? null : const EdgeInsets.only(bottom: 15),

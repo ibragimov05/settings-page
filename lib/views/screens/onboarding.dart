@@ -83,20 +83,6 @@ class _OnboardingState extends State<Onboarding> {
                   }
                   if (errorMessage.isEmpty) {
                     Navigator.pushReplacementNamed(context, RouteNames.homeScreen);
-                    // Navigator.pushReplacement(
-                    //   context,
-                    //   CupertinoPageRoute(
-                    //     builder: (context) {
-                    //       return HomeScreen(
-                    //         onThemeChanged: widget.onThemeChanged,
-                    //         onBackgroundChanged: widget.onBackgroundChanged,
-                    //         onLanguageChanged: widget.onLanguageChanged,
-                    //         onColorChanged: widget.onColorChanged,
-                    //         onTextChanged: widget.onTextChanged,
-                    //       );
-                    //     },
-                    //   ),
-                    // );
                   }
                   setState(() {});
                 },

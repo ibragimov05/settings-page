@@ -3,8 +3,10 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_page/models/course_model.dart';
+import 'package:settings_page/notifiers/note_notifier.dart';
 import 'package:settings_page/utils/app_constants.dart';
 import 'package:settings_page/utils/routes.dart';
+import 'package:settings_page/viewmodels/note_view_model.dart';
 import 'package:settings_page/views/screens/admin_page/admin_page.dart';
 import 'package:settings_page/views/screens/course_info_screen/course_info_screen.dart';
 import 'package:settings_page/views/screens/home_screen.dart';
@@ -84,16 +86,19 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        appBarTheme: AppBarTheme(
-          backgroundColor: AppConstants.appColor,
+    return NoteNotifier(
+      noteController: NoteController(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          appBarTheme: AppBarTheme(
+            backgroundColor: AppConstants.appColor,
+          ),
         ),
+        darkTheme: ThemeData.dark(),
+        themeMode: AppConstants.themeMode,
+        onGenerateRoute: _generateRoute,
       ),
-      darkTheme: ThemeData.dark(),
-      themeMode: AppConstants.themeMode,
-      onGenerateRoute: _generateRoute,
     );
   }
 
@@ -172,7 +177,7 @@ class _MyAppState extends State<MyApp> {
 
       default:
         return CupertinoPageRoute(
-          builder: (BuildContext context) => Onboarding(
+          builder: (BuildContext context) => HomeScreen(
             onThemeChanged: toggleThemeMode,
             onBackgroundChanged: onBackgroundChanged,
             onLanguageChanged: onLanguageChanged,

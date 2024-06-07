@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:settings_page/models/course_model.dart';
 import 'package:settings_page/viewmodels/course_view_model.dart';
+import 'package:settings_page/views/screens/notes_screen.dart';
 import 'package:settings_page/views/screens/todo_screen/todo_screen.dart';
 import 'package:settings_page/views/widgets/custom_inkwell_button.dart';
 import 'package:settings_page/views/widgets/custom_list_view_builder_container.dart';
@@ -30,7 +31,7 @@ class _MainScreenState extends State<MainScreen> {
                 buttonText: 'Todos',
               ),
               CustomInkwellButton(
-                nextPage: Placeholder(),
+                nextPage: NoteScreen(),
                 buttonText: 'Notes',
               ),
             ],

@@ -12,6 +12,9 @@ import 'package:settings_page/views/screens/course_info_screen/course_info_scree
 import 'package:settings_page/views/screens/home_screen.dart';
 import 'package:settings_page/views/screens/main_screen/main_screen.dart';
 import 'package:settings_page/views/screens/onboarding.dart';
+import 'package:settings_page/views/screens/onboarding/login.dart';
+import 'package:settings_page/views/screens/onboarding/register.dart';
+import 'package:settings_page/views/screens/onboarding/reset_password.dart';
 import 'package:settings_page/views/screens/profile_screen.dart';
 import 'package:settings_page/views/screens/results_screen.dart';
 import 'package:settings_page/views/screens/settings_screen.dart';
@@ -76,13 +79,13 @@ class _MyAppState extends State<MyApp> {
     setState(() {});
   }
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   AppConstants().setConstants().then((_) {
-  //     setState(() {});
-  //   });
-  // }
+  @override
+  void initState() {
+    super.initState();
+    AppConstants().setConstants().then((_) {
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -174,16 +177,21 @@ class _MyAppState extends State<MyApp> {
             onTextChanged: onTextChanged,
           ),
         );
-
+      case RouteNames.register:
+        return CupertinoPageRoute(
+          builder: (BuildContext context) => const RegisterScreen(),
+        );
+      case RouteNames.login:
+        return CupertinoPageRoute(
+          builder: (BuildContext context) => const LoginScreen(),
+        );
+      case RouteNames.resetPassword:
+        return CupertinoPageRoute(
+          builder: (BuildContext context) => const ResetPasswordScreen(),
+        );
       default:
         return CupertinoPageRoute(
-          builder: (BuildContext context) => HomeScreen(
-            onThemeChanged: toggleThemeMode,
-            onBackgroundChanged: onBackgroundChanged,
-            onLanguageChanged: onLanguageChanged,
-            onColorChanged: onColorChanged,
-            onTextChanged: onTextChanged,
-          ),
+          builder: (BuildContext context) => const LoginScreen(),
         );
     }
   }

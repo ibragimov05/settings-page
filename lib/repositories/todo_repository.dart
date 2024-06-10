@@ -1,5 +1,5 @@
 import 'package:settings_page/models/todo_model.dart';
-import 'package:settings_page/services/todo_http_service.dart';
+import 'package:settings_page/services/http/todo_http_service.dart';
 
 class TodoRepository {
   final TodoHttpService _todoHttpService = TodoHttpService();

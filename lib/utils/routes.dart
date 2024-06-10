@@ -9,4 +9,7 @@ class RouteNames {
   static const String profileScreen = '/profileScreen';
   static const String resultScreen = '/resultScreen';
   static const String settingsScreen = '/settingsScreen';
+  static const String login= '/login';
+  static const String register= '/register';
+  static const String resetPassword= '/resetPassword';
 }

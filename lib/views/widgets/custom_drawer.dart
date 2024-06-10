@@ -98,7 +98,7 @@ class CustomDrawer extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              Navigator.pushReplacementNamed(context, RouteNames.onboarding);
+              Navigator.pushReplacementNamed(context, RouteNames.login);
             },
             child: Text(
               'Log out',

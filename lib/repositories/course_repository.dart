@@ -1,6 +1,6 @@
 import 'package:settings_page/models/course_model.dart';
 import 'package:settings_page/models/lesson_model.dart';
-import 'package:settings_page/services/course_http_service.dart';
+import 'package:settings_page/services/http/course_http_service.dart';
 
 class CourseRepository {
   final CourseHttpService _courseHttpService = CourseHttpService();

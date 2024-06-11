@@ -20,9 +20,9 @@ class AuthViewmodel {
     }
   }
 
-  Future<void> resetPassword({required String password}) async {
+  Future<void> resetPassword({required String email}) async {
     try {
-      await _authHttpService.resetPassword(newPassword: password);
+      await _authHttpService.resetPassword(email: email);
     } catch (e) {
       rethrow;
     }

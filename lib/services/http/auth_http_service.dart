@@ -60,11 +60,11 @@ class AuthHttpService {
     );
   }
 
-  Future<void> resetPassword({required String newPassword}) async {
+  Future<void> resetPassword({required String email}) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     final String? userToken = sharedPreferences.getString('token');
     final Uri url = Uri.parse(
-      'https://identitytoolkit.googleapis.com/v1/accounts:update?key=$_apiKey',
+      'https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=$_apiKey',
     );
     try {
       if (userToken == null) {
@@ -73,9 +73,8 @@ class AuthHttpService {
       final response =  await http.post(
         url,
         body: jsonEncode({
-          'idToken': userToken,
-          'password': newPassword,
-          'returnSecureToken': true,
+          'requestType': 'PASSWORD_RESET',
+          'email': email,
         }),
       );
       if(response.statusCode != 200){

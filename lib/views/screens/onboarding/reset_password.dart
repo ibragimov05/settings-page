@@ -11,13 +11,13 @@ class ResetPasswordScreen extends StatefulWidget {
 class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   final AuthViewmodel _authViewmodel = AuthViewmodel();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  String _password = '';
+  String _email = '';
 
   void onResetPressed() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       try {
-        await _authViewmodel.resetPassword(password: _password);
+        await _authViewmodel.resetPassword(email: _email);
       } catch (e) {
         if (mounted) {
           showDialog(
@@ -53,25 +53,31 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
           children: [
             Form(
               key: _formKey,
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'New password',
-                ),
-                validator: (String? value) {
-                  if (value == null || value.trim().isEmpty) {
-                    return 'Enter password';
-                  }
-                  return null;
-                },
-                onSaved: (String? newValue) {
-                  _password = newValue ?? '';
-                },
+              child: Column(
+                children: [
+
+                  TextFormField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Your email',
+                    ),
+                    validator: (String? value) {
+                      if (value == null || value.trim().isEmpty) {
+                        return 'Enter email';
+                      }
+                      return null;
+                    },
+                    onSaved: (String? newValue) {
+                      _email = newValue ?? '';
+                    },
+                  ),
+                ],
               ),
             ),
             TextButton(
               onPressed: onResetPressed,
-              child: const Text('Save'),
+              child: const Text('Send'),
             ),
           ],
         ),

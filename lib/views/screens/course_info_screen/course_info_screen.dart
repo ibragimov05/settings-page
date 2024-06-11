@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_page/models/course_model.dart';
 import 'package:settings_page/utils/routes.dart';
+import 'package:settings_page/viewmodels/cart_view_model.dart';
 import 'package:settings_page/views/screens/you_tube_video/you_tube_video_screen.dart';
 
 class CourseInfoScreen extends StatefulWidget {
@@ -14,12 +15,24 @@ class CourseInfoScreen extends StatefulWidget {
 }
 
 class _CourseInfoScreenState extends State<CourseInfoScreen> {
+  bool isPressed = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.course.courseTitle),
         centerTitle: false,
+        actions: [
+          IconButton(
+            onPressed: () {
+              isPressed = true;
+              CartViewModel().addFav(widget.course);
+              setState(() {});
+            },
+            icon: Icon(isPressed ? Icons.favorite : Icons.favorite_border),
+          ),
+        ],
       ),
       body: ListView(
         physics: const BouncingScrollPhysics(),
@@ -58,10 +71,11 @@ class _CourseInfoScreenState extends State<CourseInfoScreen> {
             itemBuilder: (BuildContext context, int index) => GestureDetector(
               onTap: () => setState(() {
                 ///////////////////////////////
-                Navigator.pushNamed(context, RouteNames.youTubeVideo, arguments: {
-                  'course': widget.course,
-                  'index': index,
-                });
+                Navigator.pushNamed(context, RouteNames.youTubeVideo,
+                    arguments: {
+                      'course': widget.course,
+                      'index': index,
+                    });
                 // Navigator.push(
                 //   context,
                 //   CupertinoPageRoute(

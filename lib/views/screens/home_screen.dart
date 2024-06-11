@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:settings_page/utils/app_constants.dart';
+import 'package:settings_page/views/favorite_screen.dart';
+import 'package:settings_page/views/screens/cart_screen.dart';
 import 'package:settings_page/views/screens/main_screen/main_screen.dart';
 import 'package:settings_page/views/screens/profile_screen.dart';
 import 'package:settings_page/views/screens/results_screen.dart';
@@ -31,6 +33,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _pages = const <Widget>[
     MainScreen(),
     ResultsScreen(),
+    FavoriteScreen(),
+    CartScreen(),
     ProfileScreen(),
   ];
 
@@ -114,6 +118,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       icon: const Icon(Icons.auto_graph_outlined),
                       title: const Text("Results"),
                       selectedColor: Colors.pink,
+                    ),
+                    SalomonBottomBarItem(
+                      icon: const Icon(Icons.favorite),
+                      title: const Text("Favourite"),
+                      selectedColor: Colors.blue,
+                    ),
+                    SalomonBottomBarItem(
+                      icon: const Icon(Icons.shopping_cart),
+                      title: const Text("Cart"),
+                      selectedColor: Colors.white,
                     ),
                     SalomonBottomBarItem(
                       icon: const Icon(Icons.person),

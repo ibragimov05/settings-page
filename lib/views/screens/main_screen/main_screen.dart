@@ -41,8 +41,9 @@ class _MainScreenState extends State<MainScreen> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               TextButton(
-                onPressed: () =>
-                    setState(() => _isViewStylePressed = !_isViewStylePressed),
+                onPressed: () => setState(
+                  () => _isViewStylePressed = !_isViewStylePressed,
+                ),
                 child: const Text('Change view style'),
               ),
             ],

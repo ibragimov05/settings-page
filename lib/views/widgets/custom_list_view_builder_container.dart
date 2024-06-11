@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_page/models/course_model.dart';
 import 'package:settings_page/utils/routes.dart';
-import 'package:settings_page/views/screens/course_info_screen/course_info_screen.dart';
+import 'package:settings_page/viewmodels/cart_view_model.dart';
 
 class CustomListViewBuilderContainer extends StatelessWidget {
   final bool isViewStylePressed;
@@ -10,7 +9,7 @@ class CustomListViewBuilderContainer extends StatelessWidget {
   final bool isDelete;
   final Function()? onDeletePressed;
 
-  CustomListViewBuilderContainer({
+  const CustomListViewBuilderContainer({
     super.key,
     required this.course,
     required this.isViewStylePressed,
@@ -22,19 +21,26 @@ class CustomListViewBuilderContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, RouteNames.courseInfo, arguments: course);
+        Navigator.pushNamed(
+          context,
+          RouteNames.courseInfo,
+          arguments: course,
+        );
       },
       child: Container(
         margin: isViewStylePressed ? null : const EdgeInsets.only(bottom: 15),
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         decoration: BoxDecoration(
-            color: Colors.yellow, borderRadius: BorderRadius.circular(10)),
+          color: Colors.yellow,
+          borderRadius: BorderRadius.circular(10),
+        ),
         child: isViewStylePressed
             ? Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('Course name: ${course.courseTitle}'),
-                  Text('Description:  ${course.courseDescription.split(' ')[0]}'),
+                  Text(
+                      'Description:  ${course.courseDescription.split(' ')[0]}'),
                   Text('Price: ${course.coursePrice}'),
                 ],
               )
@@ -47,14 +53,28 @@ class CustomListViewBuilderContainer extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('Course name: ${course.courseTitle}'),
-                          Text('Description:  ${course.courseDescription.split(' ')[0]}'),
+                          Text(
+                              'Description:  ${course.courseDescription.split(' ')[0]}'),
                         ],
                       ),
-                      Text('Price: ${course.coursePrice}'),
+                      Column(
+                        children: [
+                          Text('\$${course.coursePrice}'),
+                          GestureDetector(
+                            onTap: () {
+                              CartViewModel().addCourse(course);
+                            },
+                            child: const Icon(Icons.add_shopping_cart),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                   if (isDelete)
-                    TextButton(onPressed: onDeletePressed, child: const Text('Delete course')),
+                    TextButton(
+                      onPressed: onDeletePressed,
+                      child: const Text('Delete course'),
+                    ),
                 ],
               ),
       ),

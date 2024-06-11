@@ -191,7 +191,13 @@ class _MyAppState extends State<MyApp> {
         );
       default:
         return CupertinoPageRoute(
-          builder: (BuildContext context) => const LoginScreen(),
+          builder: (BuildContext context) => HomeScreen(
+            onThemeChanged: toggleThemeMode,
+            onBackgroundChanged: onBackgroundChanged,
+            onLanguageChanged: onLanguageChanged,
+            onColorChanged: onColorChanged,
+            onTextChanged: onTextChanged,
+          ),
         );
     }
   }

@@ -94,6 +94,20 @@ class _MyAppState extends State<MyApp> {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+          buttonTheme: const ButtonThemeData(
+            buttonColor: Colors.blue
+          ),
+          colorSchemeSeed: Colors.blue,
+          textButtonTheme: const TextButtonThemeData(
+            style: ButtonStyle(
+              backgroundColor: WidgetStatePropertyAll(Colors.blue),
+            ),
+          ),
+          elevatedButtonTheme: const ElevatedButtonThemeData(
+            style: ButtonStyle(
+              backgroundColor: WidgetStatePropertyAll(Colors.blue),
+            ),
+          ),
           appBarTheme: AppBarTheme(
             backgroundColor: AppConstants.appColor,
           ),

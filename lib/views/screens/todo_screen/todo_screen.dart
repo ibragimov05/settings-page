@@ -13,6 +13,20 @@ class TodoScreen extends StatefulWidget {
 
 class _TodoScreenState extends State<TodoScreen> {
   final TodoViewModel _todoViewModel = TodoViewModel();
+  List<Todo> _todos = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadTodos();
+  }
+
+  Future<void> _loadTodos() async {
+    final todos = await _todoViewModel.todoList;
+    setState(() {
+      _todos = todos;
+    });
+  }
 
   void onAddPressed() async {
     final Map<String, dynamic> data = await showDialog(
@@ -22,20 +36,20 @@ class _TodoScreenState extends State<TodoScreen> {
       ),
     );
     if (data.isNotEmpty) {
-      _todoViewModel.addTodo(
+      await _todoViewModel.addTodo(
         todoTitle: data['todoTitle'],
         todoDescription: data['todoDescription'],
       );
-      setState(() {});
+      _loadTodos(); // Reload the todos list
     }
   }
 
-  void onTogglePressed(List<Todo> todos, int index) {
-    _todoViewModel.toggleTodo(
-      todoId: todos[index].todoId,
-      todoStatus: !todos[index].isDone,
+  void onTogglePressed(int index) async {
+    await _todoViewModel.toggleTodo(
+      todoId: _todos[index].todoId,
+      todoStatus: !_todos[index].isDone,
     );
-    setState(() {});
+    _loadTodos(); // Reload the todos list
   }
 
   void onEditPressed(Todo todo) async {
@@ -47,19 +61,21 @@ class _TodoScreenState extends State<TodoScreen> {
       ),
     );
     if (data.isNotEmpty) {
-      _todoViewModel.editTodo(
+      await _todoViewModel.editTodo(
         todoId: todo.todoId,
         newTodoTitle: data['todoTitle'],
         newTodoDescription: data['todoDescription'],
       );
-      setState(() {});
+      _loadTodos(); // Reload the todos list
     }
   }
 
-  void onDeletePressed({required String todoId}) {
-    _todoViewModel.deleteProduct(todoId: todoId);
-    setState(() {});
+  void onDeletePressed({required String todoId}) async {
+    await _todoViewModel.deleteProduct(todoId: todoId);
+    _loadTodos(); // Reload the todos list
   }
+
+  bool isSorted = false;
 
   @override
   Widget build(BuildContext context) {
@@ -86,45 +102,48 @@ class _TodoScreenState extends State<TodoScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: FutureBuilder(
-          future: _todoViewModel.todoList,
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (snapshot.hasError) {
-              return Center(
-                child: Text(snapshot.error.toString()),
-              );
-            } else if (!snapshot.hasData) {
-              return const Center(
+        child: _todos.isEmpty
+            ? const Center(
                 child: Text('Add notes'),
-              );
-            }
-            final List<Todo> todos = snapshot.data;
-            return todos.isEmpty
-                ? const Center(
-                    child: Text('Add notes'),
-                  )
-                : ListView.builder(
-                    itemCount: todos.length,
-                    itemBuilder: (context, index) {
-                      return TodosWidget(
-                        onTogglePressed: () {
-                          onTogglePressed(todos, index);
-                        },
-                        onDeletePressed: () {
-                          onDeletePressed(todoId: todos[index].todoId);
-                        },
-                        onEditPressed: () {
-                          onEditPressed(todos[index]);
-                        },
-                        todos: todos,
-                        index: index,
-                      );
+              )
+            : Column(
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: _todos.length,
+                      itemBuilder: (context, index) {
+                        return TodosWidget(
+                          onTogglePressed: () {
+                            onTogglePressed(index);
+                          },
+                          onDeletePressed: () {
+                            onDeletePressed(todoId: _todos[index].todoId);
+                          },
+                          onEditPressed: () {
+                            onEditPressed(_todos[index]);
+                          },
+                          todos: _todos,
+                          index: index,
+                        );
+                      },
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      if (!isSorted) {
+                        _todos.sort((a, b) =>
+                            b.todoCreatedDate.compareTo(a.todoCreatedDate));
+                      } else {
+                        _todos.sort((a, b) =>
+                            a.todoCreatedDate.compareTo(b.todoCreatedDate));
+                      }
+                      isSorted = !isSorted;
+                      setState(() {});
                     },
-                  );
-          },
-        ),
+                    child: const Text('Sort'),
+                  ),
+                ],
+              ),
       ),
     );
   }

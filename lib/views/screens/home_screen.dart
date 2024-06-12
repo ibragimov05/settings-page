@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+import 'package:settings_page/models/course_model.dart';
 import 'package:settings_page/utils/app_constants.dart';
+import 'package:settings_page/viewmodels/course_view_model.dart';
 import 'package:settings_page/views/favorite_screen.dart';
 import 'package:settings_page/views/screens/cart_screen.dart';
 import 'package:settings_page/views/screens/main_screen/main_screen.dart';
 import 'package:settings_page/views/screens/profile_screen.dart';
 import 'package:settings_page/views/screens/results_screen.dart';
 import 'package:settings_page/views/widgets/custom_drawer.dart';
+import 'package:settings_page/views/widgets/search_view_delegate.dart';
 
 class HomeScreen extends StatefulWidget {
   final ValueChanged<bool> onThemeChanged;
@@ -38,6 +41,20 @@ class _HomeScreenState extends State<HomeScreen> {
     ProfileScreen(),
   ];
 
+  List<Course> course = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    CourseViewModel().courseList.then(
+      (List<Course> value) {
+        course = value;
+        setState(() {});
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -63,9 +80,15 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             actions: [
-              Padding(
-                padding: const EdgeInsets.only(right: 20),
-                child: Text(AppConstants.language),
+              Text(AppConstants.language),
+              IconButton(
+                onPressed: () async {
+                  String? result = await showSearch(
+                    context: context,
+                    delegate: SearchViewDelegate(data: course),
+                  );
+                },
+                icon: const Icon(Icons.search),
               ),
             ],
           ),

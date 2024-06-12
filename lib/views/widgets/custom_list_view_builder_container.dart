@@ -31,7 +31,7 @@ class CustomListViewBuilderContainer extends StatelessWidget {
         margin: isViewStylePressed ? null : const EdgeInsets.only(bottom: 15),
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         decoration: BoxDecoration(
-          color: Colors.yellow,
+          color: Colors.blue,
           borderRadius: BorderRadius.circular(10),
         ),
         child: isViewStylePressed

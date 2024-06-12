@@ -26,7 +26,7 @@ class CustomInkwellButton extends StatelessWidget {
         height: 140,
         width: 140,
         decoration: BoxDecoration(
-          color: Colors.yellow,
+          color: Colors.blue,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Center(

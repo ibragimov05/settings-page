@@ -10,6 +10,7 @@ import 'package:settings_page/views/screens/profile_screen.dart';
 import 'package:settings_page/views/screens/results_screen.dart';
 import 'package:settings_page/views/widgets/custom_drawer.dart';
 import 'package:settings_page/views/widgets/search_view_delegate.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   final ValueChanged<bool> onThemeChanged;
@@ -73,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
           backgroundColor: Colors.transparent,
           appBar: AppBar(
             title: Text(
-              "Main page",
+              AppLocalizations.of(context)!.mainPage,
               style: TextStyle(
                 color: AppConstants.textColor,
                 fontSize: AppConstants.textSize,
@@ -134,22 +135,22 @@ class _HomeScreenState extends State<HomeScreen> {
                   items: [
                     SalomonBottomBarItem(
                       icon: const Icon(Icons.home),
-                      title: const Text("Main"),
+                      title: Text(AppLocalizations.of(context)!.main),
                       selectedColor: Colors.purple,
                     ),
                     SalomonBottomBarItem(
                       icon: const Icon(Icons.auto_graph_outlined),
-                      title: const Text("Results"),
+                      title: Text(AppLocalizations.of(context)!.results),
                       selectedColor: Colors.pink,
                     ),
                     SalomonBottomBarItem(
                       icon: const Icon(Icons.favorite),
-                      title: const Text("Favourite"),
+                      title: Text(AppLocalizations.of(context)!.fav),
                       selectedColor: Colors.blue,
                     ),
                     SalomonBottomBarItem(
                       icon: const Icon(Icons.shopping_cart),
-                      title: const Text("Cart"),
+                      title: Text(AppLocalizations.of(context)!.cart),
                       selectedColor: Colors.white,
                     ),
                     SalomonBottomBarItem(

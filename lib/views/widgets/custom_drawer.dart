@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:settings_page/utils/app_constants.dart';
 import 'package:settings_page/utils/routes.dart';
-import 'package:settings_page/views/screens/admin_page/admin_page.dart';
-import 'package:settings_page/views/screens/onboarding.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomDrawer extends StatelessWidget {
   final ValueChanged<bool> onThemeChanged;
@@ -34,7 +33,7 @@ class CustomDrawer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  "Hotels",
+                  AppLocalizations.of(context)!.hotels,
                   style: TextStyle(
                     color: AppConstants.textColor,
                     fontSize: AppConstants.textSize,
@@ -55,7 +54,7 @@ class CustomDrawer extends StatelessWidget {
               Navigator.pushReplacementNamed(context, RouteNames.homeScreen);
             },
             title: Text(
-              "Main page",
+              AppLocalizations.of(context)!.mainPage,
               style: TextStyle(
                 color: AppConstants.textColor,
                 fontSize: AppConstants.textSize,
@@ -71,7 +70,8 @@ class CustomDrawer extends StatelessWidget {
                   context, RouteNames.settingsScreen);
             },
             title: Text(
-              "Settings",
+    AppLocalizations.of(context)!.settings
+    ,
               style: TextStyle(
                 color: AppConstants.textColor,
                 fontSize: AppConstants.textSize,
@@ -86,7 +86,8 @@ class CustomDrawer extends StatelessWidget {
               Navigator.pushReplacementNamed(context, RouteNames.admin);
             },
             title: Text(
-              "Admin page",
+              AppLocalizations.of(context)!.adminPage
+              ,
               style: TextStyle(
                 color: AppConstants.textColor,
                 fontSize: AppConstants.textSize,
@@ -101,7 +102,8 @@ class CustomDrawer extends StatelessWidget {
               Navigator.pushReplacementNamed(context, RouteNames.login);
             },
             child: Text(
-              'Log out',
+              AppLocalizations.of(context)!.logOut
+              ,
               style: TextStyle(
                 color: AppConstants.textColor,
                 fontSize: AppConstants.textSize,

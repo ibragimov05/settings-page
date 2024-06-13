@@ -1,0 +1,23 @@
+{
+  "todos": "Todos",
+  "changeViewStyle": "Change view style",
+  "notes": "Notes",
+  "main": "Main",
+  "results": "Results",
+  "doneTodo": "Done todos",
+  "undonetodos": "Undone todos",
+  "fav": "Favourite",
+  "cart": "Cart",
+  "totalPrice": "Total price",
+  "mainPage": "Main Page",
+  "settings": "Settings",
+  "adminPage": "Admin Page",
+  "logOut": "Log out",
+  "night": "Night mode",
+  "write": "Write image url",
+  "color": "Change color",
+  "password": "Change password",
+  "style": "Change text style",
+  "save": "Save",
+  "hotels": "Hotels"
+}

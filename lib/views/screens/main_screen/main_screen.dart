@@ -5,6 +5,7 @@ import 'package:settings_page/views/screens/notes_screen.dart';
 import 'package:settings_page/views/screens/todo_screen/todo_screen.dart';
 import 'package:settings_page/views/widgets/custom_inkwell_button.dart';
 import 'package:settings_page/views/widgets/custom_list_view_builder_container.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -23,16 +24,16 @@ class _MainScreenState extends State<MainScreen> {
       padding: const EdgeInsets.only(left: 20.0, right: 20, top: 20),
       child: Column(
         children: [
-          const Row(
+           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               CustomInkwellButton(
-                nextPage: TodoScreen(),
-                buttonText: 'Todos',
+                nextPage: const TodoScreen(),
+                buttonText: AppLocalizations.of(context)!.todos,
               ),
-              CustomInkwellButton(
+               CustomInkwellButton(
                 nextPage: NoteScreen(),
-                buttonText: 'Notes',
+                buttonText: AppLocalizations.of(context)!.notes,
               ),
             ],
           ),
@@ -44,7 +45,7 @@ class _MainScreenState extends State<MainScreen> {
                 onPressed: () => setState(
                   () => _isViewStylePressed = !_isViewStylePressed,
                 ),
-                child: const Text('Change view style'),
+                child: Text(AppLocalizations.of(context)!.changeViewStyle),
               ),
             ],
           ),

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:settings_page/models/course_model.dart';
 import 'package:settings_page/notifiers/note_notifier.dart';
 import 'package:settings_page/utils/app_constants.dart';
@@ -21,6 +22,7 @@ import 'package:settings_page/views/screens/settings_screen.dart';
 import 'package:settings_page/views/screens/todo_screen/todo_screen.dart';
 import 'package:settings_page/views/screens/you_tube_video/you_tube_video_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,6 +36,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  Locale _locale = Locale('uz');
+
   void toggleThemeMode(bool value) async {
     AppConstants.themeMode = value ? ThemeMode.dark : ThemeMode.light;
     SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -52,6 +56,7 @@ class _MyAppState extends State<MyApp> {
     AppConstants.language = language;
     SharedPreferences preferences = await SharedPreferences.getInstance();
     preferences.setString('language', language);
+    _locale = Locale(language);
     setState(() {});
   }
 
@@ -85,6 +90,7 @@ class _MyAppState extends State<MyApp> {
     AppConstants().setConstants().then((_) {
       setState(() {});
     });
+    AppConstants.language = 'uz';
   }
 
   @override
@@ -92,11 +98,12 @@ class _MyAppState extends State<MyApp> {
     return NoteNotifier(
       noteController: NoteController(),
       child: MaterialApp(
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        locale: _locale,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          buttonTheme: const ButtonThemeData(
-            buttonColor: Colors.blue
-          ),
+          buttonTheme: const ButtonThemeData(buttonColor: Colors.blue),
           colorSchemeSeed: Colors.blue,
           textButtonTheme: const TextButtonThemeData(
             style: ButtonStyle(

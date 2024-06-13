@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:settings_page/viewmodels/todo_view_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ResultsScreen extends StatefulWidget {
   const ResultsScreen({super.key});
@@ -46,8 +47,8 @@ class _ResultsScreenState extends State<ResultsScreen> {
                           fontSize: 40,
                           color: Colors.grey),
                     ),
-                    const Text(
-                      'Done todos',
+                    Text(
+                      AppLocalizations.of(context)!.doneTodo,
                       style: TextStyle(
                         fontWeight: FontWeight.w900,
                         fontSize: 20,
@@ -66,8 +67,8 @@ class _ResultsScreenState extends State<ResultsScreen> {
                           fontSize: 40,
                           color: Colors.grey),
                     ),
-                    const Text(
-                      'Undone todos',
+                    Text(
+                      AppLocalizations.of(context)!.undonetodos,
                       style: TextStyle(
                         fontWeight: FontWeight.w900,
                         fontSize: 20,

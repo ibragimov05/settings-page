@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:settings_page/models/course_model.dart';
 import 'package:settings_page/viewmodels/cart_view_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
@@ -33,7 +34,7 @@ class _CartScreenState extends State<CartScreen> {
     return Column(
       children: [
         Text(
-          'Total price: ${calculateTotalPrice()}',
+          '${AppLocalizations.of(context)!.totalPrice}: ${calculateTotalPrice()}',
           style: const TextStyle(
             color: Colors.white,
             fontSize: 30,

@@ -4,6 +4,7 @@ import 'package:settings_page/utils/app_constants.dart';
 import 'package:settings_page/views/widgets/custom_drawer.dart';
 import 'package:settings_page/views/widgets/edit_text_alert_dialog.dart';
 import 'package:settings_page/views/widgets/password_alert_dialog.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettingsScreen extends StatefulWidget {
   final ValueChanged<bool> onThemeChanged;
@@ -27,7 +28,7 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   final TextEditingController _textEditingController = TextEditingController();
-  final List<String> _items = ['uz', 'eng', 'rus'];
+  final List<String> _items = ['uz', 'eng', 'ru'];
   String? _selectedItem;
   Color _currentColor = AppConstants.appColor;
 
@@ -70,7 +71,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Settings",
+          AppLocalizations.of(context)!.settings,
           style: TextStyle(
             color: AppConstants.textColor,
             fontSize: AppConstants.textSize,
@@ -117,7 +118,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 value: AppConstants.themeMode == ThemeMode.dark,
                 onChanged: widget.onThemeChanged,
                 title: Text(
-                  "Night mode",
+                  AppLocalizations.of(context)!.night,
                   style: TextStyle(
                     color: AppConstants.textColor,
                     fontSize: AppConstants.textSize,
@@ -128,8 +129,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 child: TextField(
                   controller: _textEditingController,
-                  decoration: const InputDecoration(
-                    hintText: 'Write image url',
+                  decoration: InputDecoration(
+                    hintText: AppLocalizations.of(context)!.write,
                   ),
                 ),
               ),
@@ -150,7 +151,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   _openColorPicker();
                 },
                 child: Text(
-                  'Change color',
+                  AppLocalizations.of(context)!.color,
                   style: TextStyle(
                     color: AppConstants.textColor,
                     fontSize: AppConstants.textSize,
@@ -167,7 +168,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   );
                 },
                 child: Text(
-                  'Change password',
+                  AppLocalizations.of(context)!.password,
                   style: TextStyle(
                     color: AppConstants.textColor,
                     fontSize: AppConstants.textSize,
@@ -184,7 +185,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   );
                 },
                 child: Text(
-                  'Change text style',
+                  AppLocalizations.of(context)!.style,
                   style: TextStyle(
                     color: AppConstants.textColor,
                     fontSize: AppConstants.textSize,
